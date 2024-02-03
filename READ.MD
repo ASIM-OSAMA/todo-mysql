@@ -6,21 +6,28 @@
 
       1. users tables: This table contain `13 columns`:
 
-           |  No.  | Column          | Description, notes or any infos.                                                                     |
-           | :---: | :-------------- | :--------------------------------------------------------------------------------------------------- |
-           |   1   | user_id         | primary, int(10),                                                                                    |
-           |   2   | user_role       | ADMIN (Can `CRUD` any user or task), Owner (Can `CRUD` any task), visitor (Can `READ` PUBLIC tasks). |
-           |   3   | user_first_name | varchar(45).                                                                                         |
-           |   4   | user_last_name  | varchar(45).                                                                                         |
-           |   4   | user_username   | varchar(45).                                                                                         |
-           |   5   | user_email      | varcahr(150).                                                                                        |
-           |   5   | user_password   | HASHED, MD5, SHA-x.                                                                                  |
-           |   6   | user_picture    | varchar(250), picture name.                                                                          |
-           |   7   | user_bio        | varchar(250).                                                                                        |
-           |   8   | number_of_tasks | TINYINT.                                                                                             |
-           |   9   | linked_accounts | Gmail, Facebook, X, Github.                                                                          |
-           |  10   | profile_type    | Private (DEFAULT), Public.                                                                           |
-           |  11   | created         | Day, Date, Time `(H:M)`.                                                                             |
+           |  No.  | Column          | Description, notes or any infos.           |
+           | :---: | :-------------- | :----------------------------------------- |
+           |   1   | user_id         | primary, int(10),                          |
+           |   2   | user_role       | AdminTop, Admin, Owner ,Editor , visitor . |
+           |   3   | user_first_name | varchar(45).                               |
+           |   4   | user_last_name  | varchar(45).                               |
+           |   4   | user_username   | varchar(45).                               |
+           |   5   | user_email      | varcahr(150).                              |
+           |   5   | user_password   | HASHED, MD5, SHA-x.                        |
+           |   6   | user_picture    | varchar(250), picture name.                |
+           |   7   | user_bio        | varchar(250).                              |
+           |   8   | number_of_tasks | TINYINT.                                   |
+           |   9   | linked_accounts | Gmail, Facebook, X, Github.                |
+           |  10   | profile_type    | Private (DEFAULT), Public.                 |
+           |  11   | created         | Day, Date, Time `(H:M)`.                   |
+
+          * Note:
+            1. AdminTop: Admin with all privileges (HIGHTEST authority), Can `CRUD` any user or task.
+            2. Admin: Can `CRUD` any user (Except AdminTop) or task.
+            3. Owner: Can `CRUD` any task.
+            4. Editor: Can `RUD` any task for a certain user if authorized.
+            5. Visitor: Can `R` PUBLIC tasks.
 
       2. todo table: This table contain `8 columns`:
 
