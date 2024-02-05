@@ -1,6 +1,6 @@
 const express = require('express')
 const pool = require('./backend/config/db')
-// const exphbs = require('express-handlebars').engine
+const exphbs = require('express-handlebars').engine
 // const bodyParser = require('body-parser')
 // const mongoose = require('mongoose')
 const todo_route = require('./backend/routes/todoRoute')
@@ -11,21 +11,22 @@ const app = express()
 
 const port = process.env.port || 5000
 
-// // configure Handlebars view engine
-// app.engine(
-//   'handlebars',
-//   exphbs({
-//     defaultLayout: 'main'
-//     // helpers: {
-//     //   section: function (name, options) {
-//     //     if (!this._sections) this._sections = {}
-//     //     this._sections[name] = options.fn(this)
-//     //     return null
-//     //   }
-//     // }
-//   })
-// )
-// app.set('view engine', 'handlebars')
+// configure Handlebars view engine
+app.engine(
+  'handlebars',
+  exphbs({
+    defaultLayout: 'main'
+    // helpers: {
+    //   section: function (name, options) {
+    //     if (!this._sections) this._sections = {}
+    //     this._sections[name] = options.fn(this)
+    //     return null
+    //   }
+    // }
+  })
+)
+app.set('view engine', 'hbs')
+// app.use(express.static(__dirname + '/public'))
 
 app.use('/users', users_route)
 // app.use('/todos', router)

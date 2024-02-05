@@ -13,8 +13,10 @@
     "dotenv": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/dotenv",
     "express": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express",
     "express-async-handler": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-async-handler",
+    "express-session": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-session",
     "mysql": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/mysql",
-    "mysql2": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/mysql2"
+    "passport": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport",
+    "passport-local": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport-local"
   },
   "devDependencies": {
     "nodemon": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/nodemon"
