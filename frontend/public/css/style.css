@@ -1,0 +1,369 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    /* background-color: #ffffff; */
+    margin: 0px;
+    padding: 0px;
+}
+
+.login {
+    margin: 1em 0em 8em 0em;
+    padding: 0.5em 10em;
+    font-size: 1em;
+}
+
+/* CSS Grid Start */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "nav-bar nav-bar nav-bar"
+        "side-left content side-right"
+        "full-width full-width full-width"
+        "footer footer footer"
+    ;
+    grid-template-columns: 1fr 7fr 1fr;
+    align-items: center;
+    grid-gap: 5em 0em;
+}
+
+.side-left {
+    grid-area: side-left;
+}
+
+.content {
+    grid-area: content;
+}
+
+.side-right {
+    grid-area: side-right;
+}
+
+.full-width {
+    grid-area: full-width;
+    margin: 0em 2em;
+    padding: 0em 2em;
+}
+
+
+/* CSS Grid End */
+
+/* Button style start */
+.btn-primary {
+    color: #00b6fe;
+    background-color: white;
+    border: 1.5px solid #00b6fe;
+    border-radius: 5px;
+    padding: 0.3em 0.5em;
+}
+
+.btn-primary:hover {
+    background-color: #00b6fe;
+    color: white;
+    transition: 0.5s;
+}
+
+.btn-primary:active {
+    background-color: #1198cd;
+    color: white;
+}
+
+.btn-secondary {
+    color: #20b820;
+    background-color: #d9fbd9;
+    border: 1px solid #20b820;
+    border-radius: 3px;
+    padding: 0.3em 0.5em;
+}
+
+.btn-secondary:hover {
+    background-color: #1bcc1b;
+    color: white;
+    transition: 0.5s;
+}
+
+.btn-secondary:active {
+    background-color: #18a318;
+}
+
+.btn-danger {
+    color: red;
+    background-color: #f3e6e6;
+    border: 1px solid red;
+    border-radius: 3px;
+    padding: 0.3em 0.5em;
+}
+
+.btn-danger:hover {
+    background-color: #eb1a0b;
+    color: white;
+    transition: 0.5s;
+}
+
+.btn-danger:active {
+    background-color: #92170e;
+}
+
+.btn-tbl {
+    margin: 0.5em 1em;
+    padding: 0.1em 1em;
+    display: block;
+}
+
+
+/* Button style end */
+a {
+    text-decoration: none;
+}
+
+/* Message style start */
+.success {
+    color: whitesmoke;
+    background-color: #20b820;
+    width: fit-content;
+    margin: 0em 0em 2em;
+    padding: 0em 2em;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.error {
+    color: #eb1a0b;
+    background-color: whitesmoke;
+    width: fit-content;
+    margin: 0em 2em 2em;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.tbl-error {
+    color: #eb1a0b;
+    background-color: whitesmoke;
+    width: fit-content;
+    margin: 0em;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.warning {
+    color: black;
+    background-color: yellow;
+    width: fit-content;
+    margin: 0em 2em 2em;
+    padding: 0em 2em;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+/* Message style end */
+
+/* Navigation Bar style start */
+
+.grid-container header {
+    grid-column: 1/span 3;
+    text-align: center;
+}
+
+.grid-container header * {
+    color: black;
+    background-color: #e6e6e6;
+}
+
+.nav-bar {
+    grid-area: nav-bar;
+    width: 100%;
+    padding: 1em 0em 1em;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.nav-bar div {
+    display: inline;
+    padding: 0;
+    font-size: 1.1em;
+}
+
+.nav-bar div a {
+    display: inline;
+    padding: 5px 1em;
+    font-size: 1.1em;
+}
+
+.nav-bar div a:hover {
+    color: white;
+    background-color: #0e96e1;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px 1em;
+    transition: 0.5s;
+}
+
+.nav-bar div a:active {
+    color: white;
+    background-color: #097fbe;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px 1em;
+    transition: 0.5s;
+}
+
+/* Navigation Bar style end */
+
+/* Footer style start */
+.footer {
+    grid-area: footer;
+    color: white;
+    background-color: #0e96e1;
+    text-align: center;
+    padding: 5em 5em;
+    margin: 2em 0px 0px;
+}
+
+/* Footer style end */
+
+/* Center content style start */
+
+.form-center {
+    font-size: 1em;
+    display: grid;
+    grid-gap: 0.5em;
+    place-items: center;
+    border: 3px solid black;
+    border-radius: 1em;
+    /* background-color: aliceblue; */
+    width: 40%;
+    margin: 3em auto 0px auto;
+    box-shadow: 0px 0px 20px 10px whitesmoke;
+}
+
+.form-center input[type=text],
+input[type=password] {
+    text-align: center;
+    font-size: 1em;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    padding: 0.5em 6em;
+}
+
+/* Center content style end */
+
+/* Admin table start. */
+.tbl-admin {
+
+    width: 100%;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    text-align: center;
+    border: 2px solid black;
+}
+
+tr th {
+    border-bottom: 2px solid black;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0.2em 0.5em;
+}
+
+tr:nth-child(even) {
+    background-color: ghostwhite;
+
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+
+tr:hover {
+    background-color: #D6EEEE;
+}
+
+td {
+    padding: 1em 0em;
+    border-bottom: 2px solid black;
+}
+
+/* Admin table style end. */
+
+.tbl-wrapper {
+    /* Managing table */
+    width: 100%;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    text-align: center;
+}
+
+.tbl-order {
+    /* Managing table */
+    width: 100%;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    text-align: center;
+    font-size: 11px;
+}
+
+.tbl-heading {
+    color: white;
+    background-color: deepskyblue;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+
+}
+
+.tbl-heading:hover {
+    background-color: deepskyblue;
+}
+
+.content-header {
+    margin: 4em 0 2em;
+
+}
+
+.btn-add-content {
+    margin: 0em 0em 4em
+}
+
+.tbl-1 {
+    border-spacing: 0px 2em;
+}
+
+.tbl-1 td {
+    padding: 0%;
+    margin: 0%;
+}
+
+.tbl-row-last {
+    width: 10%;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    grid-gap: 0em 2em;
+}
+
+.box {
+    /* padding: 5em 0em; */
+    border: 1px solid black;
+    margin: 3em 3em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.box {
+    width: 100%;
+    color: #ffffff;
+    background-color: #0e96e1;
+    padding: 4em 0em;
+    border: 1px solid black;
+    margin: 0em 0.5em;
+    border-radius: 0.5em;
+}
+
+.box h1 {
+    background-color: #0e96e1;
+}

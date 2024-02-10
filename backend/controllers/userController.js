@@ -9,12 +9,13 @@ const { errorHandler } = require('../middleware/errorMiddleware')
 const getUsers = asyncHandler(async (req, res) => {
   await pool.getConnection((err, connection) => {
     if (err) throw err
-    connection.query('SELECT * from users', (err, rows) => {
+    connection.query('SELECT * from users', (err, allUsers) => {
       connection.release() // return the connection to pool
 
       if (!err) {
-        res.status(200).json({ rows })
-        console.log('OK_1 👍')
+        res.status(200).render('dashboard', { allUsers })
+        // res.status(200).json({ allUsers })
+        console.log('Get all users OK_1 👍')
       } else {
         console.log(err)
       }

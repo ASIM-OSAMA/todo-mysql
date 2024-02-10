@@ -13,9 +13,10 @@ const port = process.env.port || 5000
 
 // configure Handlebars view engine
 app.engine(
-  'handlebars',
+  'hbs',
   exphbs({
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    extname: '.hbs'
     // helpers: {
     //   section: function (name, options) {
     //     if (!this._sections) this._sections = {}
@@ -26,7 +27,8 @@ app.engine(
   })
 )
 app.set('view engine', 'hbs')
-// app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/frontend/public'))
+// console.log(__dirname + '/frontend/public')
 
 app.use('/users', users_route)
 // app.use('/todos', router)
