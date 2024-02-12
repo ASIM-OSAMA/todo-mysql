@@ -5,12 +5,15 @@
                 <i class="fas fa-user-plus"></i>
                 Register
             </h1>
-            <form action="/users/register" method="POST">
+
+            {{> messages}}
+
+            <form action="/admin/register" method="POST">
 
                 <div class="form-group">
                     <div class="form-floating">
                         <input type="name" id="firstname" name="firstname" class="form-control"
-                            placeholder="Enter First Name" value="" />
+                            placeholder="Enter First Name" value="{{firstname}}" required>
                         <label for="firstname">First Name</label>
                     </div>
                 </div>
@@ -18,7 +21,7 @@
                 <div class="form-group">
                     <div class="form-floating mt-2">
                         <input type="lastname" id="lastname" name="lastname" class="form-control"
-                            placeholder="Enter Last Name" value="" />
+                            placeholder="Enter Last Name" value="{{lastname}}" required>
                         <label for="lastname">Last Name</label>
                     </div>
                 </div>
@@ -26,14 +29,15 @@
                 <div class="form-group">
                     <div class="form-floating mt-2">
                         <input type="username" id="username" name="username" class="form-control"
-                            placeholder="Enter Username" value="" />
+                            placeholder="Enter Username" value="{{lastname}}">
                         <label for="username">Username</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-floating mt-2">
-                        <input type="email" id="floatingInput" class="form-control" placeholder="name@example.com" />
+                        <input type="email" id="floatingInput" name="email" class="form-control"
+                            placeholder="name@example.com" value="{{email}}" required>
                         <label for="floatingInput">Email Address</label>
                         <small id="emailHelp" class="form-text text-muted">We'll never share
                             your email with anyone else.</small>
@@ -42,67 +46,35 @@
 
                 <div class="form-group">
                     <div class="form-floating mt-2">
-                        <input type="password" id="password" class="form-control" placeholder="Create Password" />
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Create Password" value="{{password}}" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-floating mt-2">
-                        <input type="password" id="password2" class="form-control" placeholder="Confirm Password" />
+                        <input type="password" id="password2" name="password2" class="form-control"
+                            placeholder="Confirm Password" value="{{password2}}" required>
                         <label class="form-label mt-2" for="password2">Confirm Password</label>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="form-label mt-2">
-                        Role
-                    </div>
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" id="admin_radio" name="role" value="admin"
-                            autocomplete="off" checked="" />
-                        <label for="admin_radio" class="btn btn-outline-primary">Admin</label>
 
-                        <input type="radio" class="btn-check" id="owner_radio" name="role" value="owner"
-                            autocomplete="off" checked="" />
-                        <label for="owner_radio" class="btn btn-outline-primary">Owner</label>
-
-                        <input type="radio" class="btn-check" id="editor_radio" name="role" value="editor"
-                            autocomplete="off" checked="" />
-                        <label for="editor_radio" class="btn btn-outline-primary">Editor</label>
-
-                        <input type="radio" class="btn-check" id="visitor_radio" name="role" value="visitor"
-                            autocomplete="off" checked="" />
-                        <label for="visitor_radio" class="btn btn-outline-primary">Visitor</label>
-                    </div>
-                </div>
                 <div class="form-floating mt-2">
                     <div class="form-group">
-                        <label class="form-label mt-2" for="name">Bio</label>
-                        <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
-                            value="" />
+                        <label class="form-label mt-2" for="bio">Bio</label>
+                        <input type="name" id="bio" name="bio" class="form-control" placeholder="Enter Name"
+                            value="{{bio}}" />
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="form-label mt-2">
-                        Account Type
-                    </div>
 
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" id="btnradio5" name="account_type" value="public"
-                            autocomplete="off" checked="" />
-                        <label for="btnradio5" class="btn btn-outline-primary">Public</label>
-
-                        <input type="radio" class="btn-check" id="btnradio6" name="account_type" value="private"
-                            autocomplete="off" checked="" />
-                        <label for="btnradio6" class="btn btn-outline-primary">Private</label>
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <label for="profile_picture" class="form-label mt-2">Profile Picture</label>
-                    <input class="form-control" type="file" id="profile_picture" />
+                    <input class="form-control" type="file" id="profile_picture" name="profile_picture"
+                        value="{{profile_picture}}">
                 </div>
                 <button type="submit" class="btn btn-outline-primary mt-4">
                     Register

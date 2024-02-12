@@ -17,6 +17,7 @@
     "express-async-handler": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-async-handler",
     "express-handlebars": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-handlebars",
     "express-session": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-session",
+    "express-validator": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-validator",
     "mysql": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/mysql",
     "passport": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport",
     "passport-local": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport-local"

@@ -2,13 +2,13 @@
     <div class="col-md-6 m-auto">
         <div class="card card-body">
             <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Login</h1>
-            <% include ./partials/messages %>
-                <form action="/users/login" method="POST">
+            {{!-- <% include ./partials/messages %> --}}
+                <form action="/admin/login" method="POST">
 
                     <div class="form-group">
                         <div class="form-floating mt-2">
-                            <input type="email" id="floatingInput" class="form-control"
-                                placeholder="name@example.com" />
+                            <input type="email" id="floatingInput" name="email" class="form-control"
+                                placeholder="name@example.com" required>
                             <label for="floatingInput">Email Address</label>
 
                         </div>
@@ -16,8 +16,8 @@
 
                     <div class="form-group">
                         <div class="form-floating mt-2">
-                            <input type="password" id="password" class="form-control"
-                                placeholder="Enter Your Password" />
+                            <input type="password" id="password" name="password" class="form-control"
+                                placeholder="Enter Your Password" required>
                             <label for="password">Password</label>
                         </div>
                     </div>

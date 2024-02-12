@@ -3,13 +3,14 @@ const pool = require('./backend/config/db')
 const exphbs = require('express-handlebars').engine
 // const bodyParser = require('body-parser')
 // const mongoose = require('mongoose')
-const todo_route = require('./backend/routes/todoRoute')
-const users_route = require('./backend/routes/usersRoute')
+const todoRoutes = require('./backend/routes/todoRoutes')
+const usersRoutes = require('./backend/routes/usersRoutes')
+const adminRoutes = require('./backend/routes/adminRoutes')
 const { errorHandler } = require('./backend/middleware/errorMiddleware')
 
 const app = express()
 
-const port = process.env.port || 5000
+const port = process.env.PORT || 3000
 
 // configure Handlebars view engine
 app.engine(
@@ -30,7 +31,11 @@ app.set('view engine', 'hbs')
 app.use(express.static(__dirname + '/frontend/public'))
 // console.log(__dirname + '/frontend/public')
 
-app.use('/users', users_route)
+// Express body parser
+app.use(express.urlencoded({ extended: true }))
+
+app.use('/users', usersRoutes)
+app.use('/admin', adminRoutes)
 // app.use('/todos', router)
 
 app.use(errorHandler)
