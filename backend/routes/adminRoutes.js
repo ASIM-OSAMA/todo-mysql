@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { addAdmin } = require('../controllers/adminController')
+const { register } = require('../controllers/registerController')
 const validateUser = require('../validations/registerValidation')
 
 router.get('/', (req, res) => res.render('./admin/welcome'))
@@ -10,7 +10,7 @@ router.get('/dashboard', (req, res) => res.render('./admin/dashboard'))
 router.get('/manage-admins', (req, res) => res.render('./admin/manage-admins'))
 
 // Register form handling
-router.route('/register').post(validateUser, addAdmin)
+router.route('/register').post(validateUser, register)
 
 // Login form handling
 router.post('/login', (req, res) => {
