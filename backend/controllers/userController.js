@@ -13,7 +13,7 @@ const getUsers = asyncHandler(async (req, res) => {
       connection.release() // return the connection to pool
 
       if (!err) {
-        res.status(200).render('dashboard', { allUsers })
+        res.status(200).render('./admin/manage-users', { allUsers })
         // res.status(200).json({ allUsers })
         console.log('Get all users OK_1 👍')
       } else {

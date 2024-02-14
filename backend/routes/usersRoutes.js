@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { getUsers } = require('../controllers/userController')
 
-// router.get('/', getUsers)
+router.get('/manage-users', getUsers)
 // router.get('/:id', getProduct)
 // router.post('/add', addProduct)
 // router.put('/update/:id', updateProduct)

@@ -1,0 +1,61 @@
+<div class="row mt-4">
+    <div class="col-md-11 m-auto">
+
+        <div class="card border-primary mb-3" style="max-width: 100%;">
+            <div class="card-header">
+                Welcome <%= user.name %>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">MANAGE USERS</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.
+                </p>
+                <div class="mb-4">
+                    <a href="/admin/register" class="btn btn-outline-primary">Add an Administrator</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">Picture Path</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Bio</th>
+                                <th scope="col">Number of Tasks</th>
+                                <th scope="col">Linked Accounts</th>
+                                <th scope="col">Created</th>
+                                <th scope="col" colspan="3">Actions</th>
+                            </tr>
+                        </thead>
+                        {{#each allUsers}}
+
+                        <tr>
+                            <td scope="row">{{this.user_picture}}</td>
+                            {{!-- <td scope="row">{{this.user_picture}}</td> --}}
+                            <td scope="row">{{this.user_firstname}}</td>
+                            <td scope="row">{{this.user_lastname}}</td>
+                            <td scope="row">{{this.user_username}}</td>
+                            <td scope="row">{{this.user_email}}</td>
+                            <td scope="row">{{this.user_bio}}</td>
+                            <td scope="row">{{this.num_tasks}}</td>
+                            <td scope="row">{{this.linked_accounts}}</td>
+                            <td scope="row">{{this.created}}</td>
+                            <td scope="row">
+                                <a href="#" class="btn btn-outline-warning mt-1 px-2">Update User</a>
+                                <a href="#" class="btn btn-outline-danger mt-1 px-1">Remove User</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

@@ -44,7 +44,11 @@ const register = asyncHandler(async (req, res) => {
           (err, rows) => {
             connection.release() // return the connection to pool
             if (!err) {
-              res.status(302).redirect('dashboard')
+              req.flash(
+                'success_msg',
+                `You are now registered ${firstname}, Login to continue.`
+              )
+              res.status(302).redirect('login')
               console.log(`${firstname} has been added.`)
             } else {
               console.log(err)
