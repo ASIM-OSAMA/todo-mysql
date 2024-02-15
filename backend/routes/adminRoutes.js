@@ -2,20 +2,38 @@ const express = require('express')
 const router = express.Router()
 const { register } = require('../controllers/registerController')
 const validateUser = require('../validations/registerValidation')
+const passport = require('passport')
 
+// Dashboard, Welcome, Manage-Admin routes handling
 router.get('/', (req, res) => res.render('./admin/welcome'))
-router.get('/register', (req, res) => res.render('./admin/register'))
-router.get('/login', (req, res) => res.render('./admin/login'))
 router.get('/dashboard', (req, res) => res.render('./admin/dashboard'))
 router.get('/manage-admins', (req, res) => res.render('./admin/manage-admins'))
 
-// Register form handling
+// Register routes and form handling
+router.get('/register', (req, res) => res.render('./admin/register'))
 router.route('/register').post(validateUser, register)
 
-// Login form handling
-router.post('/login', (req, res) => {
-  console.log(req.body)
-  res.send(req.body)
+// Login routes and form handling
+router.get('/login', (req, res) => res.render('./admin/login'))
+
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/admin/manage-admins',
+    failureRedirect: '/admin/login',
+    badRequestMessage: 'Missing Credentials.', //missing credentials,
+    failureFlash: true
+  })(req, res, next)
+})
+
+// Logout routes handling
+router.get('/logout', (req, res) => {
+  req.logout(err => {
+    if (err) {
+      return next(err)
+    }
+    req.flash('success_msg', 'Successfully Logged-Out')
+    res.redirect('/admin/login') //Redirect to login page
+  })
 })
 
 module.exports = router

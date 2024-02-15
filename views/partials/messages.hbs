@@ -11,14 +11,15 @@
 
 {{!-- Flash error_msg --}}
 
+
+
 {{#if error_msg}}
-{{#each error_msg}}
 <div class="alert alert-dismissible alert-danger">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    {{this.msg}}
+    {{error_msg}}
 </div>
-{{/each}}
 {{/if}}
+
 
 {{!-- Flash error_msg --}}
 
@@ -37,7 +38,11 @@
 {{!-- Flash Success_msg --}}
 
 
-{{! <div class="alert alert-dismissible alert-danger">
+{{!-- Passport error --}}
+{{#if error}}
+<div class="alert alert-dismissible alert-danger">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-</div> }}
+    {{error}}
+</div>
+{{/if}}
+{{!-- Passport error --}}

@@ -1,12 +1,14 @@
+const logger = require('morgan')
 const express = require('express')
 const pool = require('./backend/config/db')
 const exphbs = require('express-handlebars').engine
-const todoRoutes = require('./backend/routes/todoRoutes')
-const usersRoutes = require('./backend/routes/usersRoutes')
-const adminRoutes = require('./backend/routes/adminRoutes')
+const { routes } = require('./backend/routes/routes')
 const flash = require('connect-flash')
 const { globalVariables } = require('./backend/middleware/globalVariables')
 const session = require('express-session')
+const SQLiteStore = require('connect-sqlite3')(session)
+const passport = require('passport')
+require('./backend/authentication/passport')(passport)
 const { errorHandler } = require('./backend/middleware/errorMiddleware')
 
 const app = express()
@@ -40,9 +42,12 @@ app.use(
   session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new SQLiteStore({ db: 'sessions.db', dir: './backend/config' })
   })
 )
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Connect flash
 app.use(flash())
@@ -50,9 +55,8 @@ app.use(flash())
 // Global variables middleware
 app.use(globalVariables)
 
-app.use('/users', usersRoutes)
-app.use('/admin', adminRoutes)
-// app.use('/todos', router)
+// Use Routes
+app.use(routes)
 
 app.use(errorHandler)
 // Make sure to define error-handling middleware in the last, after other app.use().

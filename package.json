@@ -12,6 +12,7 @@
   "dependencies": {
     "bcryptjs": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/bcryptjs",
     "connect-flash": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/connect-flash",
+    "connect-sqlite3": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/connect-sqlite3",
     "dotenv": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/dotenv",
     "express": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express",
     "express-async-handler": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-async-handler",
@@ -19,6 +20,7 @@
     "express-oauth2-jwt-bearer": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-oauth2-jwt-bearer",
     "express-session": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-session",
     "express-validator": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-validator",
+    "morgan": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/morgan",
     "mysql": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/mysql",
     "passport": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport",
     "passport-local": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport-local"

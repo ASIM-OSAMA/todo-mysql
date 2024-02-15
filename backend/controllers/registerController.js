@@ -7,7 +7,8 @@ const { errorHandler } = require('../middleware/errorMiddleware')
 
 // Register form handling
 
-const register = asyncHandler(async (req, res) => {
+// const register = asyncHandler(async (req, res) => {
+const register = (req, res) => {
   pool.getConnection((err, connection) => {
     if (err) throw err
 
@@ -60,7 +61,7 @@ const register = asyncHandler(async (req, res) => {
       })
     })
   })
-})
+}
 
 // // Login form handling
 
