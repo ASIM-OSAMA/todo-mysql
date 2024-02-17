@@ -1,3 +1,6 @@
+{{> admin-navbar}}
+
+
 <div class="row mt-4">
     <div class="col-md-11 m-auto">
 
@@ -7,9 +10,11 @@
             </div>
             <div class="card-body">
                 <h4 class="card-title">MANAGE USERS</h4>
+                <p class="card-text">
+                    <i>Number of Users:</i> <b>{{usersCount}}</b>
+                </p>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.
+                    card's content.
                 </p>
                 <div class="mb-4">
                     <a href="/admin/register" class="btn btn-outline-primary">Add an Administrator</a>
@@ -56,6 +61,5 @@
             </div>
         </div>
     </div>
-
 </div>
-</div>
+{{!-- </div> --}}

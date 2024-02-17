@@ -10,12 +10,14 @@ const app = express()
 
 // Make sure all following routes will be passed through ensureAuthenticated
 const routes = [
-  // app.get('/admin/', (req, res) => res.render('./admin/welcome')),
+  // Todo index page
+  app.get('/', (req, res) => res.render('index')),
   app.get('/admin/login', (req, res) => res.render('./admin/login')),
 
   app.post('/admin/login', (req, res, next) => {
     passport.authenticate('local', {
-      successRedirect: '/admin/manage-admins',
+      successRedirect: '/admin',
+      // successMessage,
       failureRedirect: '/admin/login',
       badRequestMessage: 'Missing Credentials.', //missing credentials,
       failureFlash: true
@@ -25,8 +27,7 @@ const routes = [
   app.all('*', ensureAuthenticated),
   app.use('/admin', adminRoutes),
   app.use('/admin/users', usersRoutes)
-
-  // app.use('/todos', router),
+  // app.use('/todos', todoRoutes)
 ]
 
 module.exports = { routes }

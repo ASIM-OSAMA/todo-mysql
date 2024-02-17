@@ -3,7 +3,7 @@
 // result in (if routed) a new instance of a Controller (Class).
 const asyncHandler = require('express-async-handler')
 const pool = require('../config/db')
-const { errorHandler } = require('../middleware/errorMiddleware')
+// const { errorHandler } = require('../middleware/errorMiddleware')
 
 // All the features logic will go here with separate controller files.
 const getUsers = asyncHandler(async (req, res) => {
@@ -13,7 +13,8 @@ const getUsers = asyncHandler(async (req, res) => {
       connection.release() // return the connection to pool
 
       if (!err) {
-        res.status(200).render('./admin/manage-users', { allUsers })
+        const usersCount = allUsers.length
+        res.status(200).render('./admin/manage-users', { allUsers, usersCount })
         // res.status(200).json({ allUsers })
         console.log('Get all users OK_1 👍')
       } else {

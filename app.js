@@ -9,6 +9,7 @@ const session = require('express-session')
 const SQLiteStore = require('connect-sqlite3')(session)
 const passport = require('passport')
 require('./backend/authentication/passport')(passport)
+// const { getUserData } = require('./backend/middleware/getUserData')
 const { errorHandler } = require('./backend/middleware/errorMiddleware')
 
 const app = express()
@@ -49,6 +50,9 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+// Get Authenticated User Data Middleware
+// app.use(getUserData)
+
 // Connect flash
 app.use(flash())
 
@@ -58,8 +62,8 @@ app.use(globalVariables)
 // Use Routes
 app.use(routes)
 
-app.use(errorHandler)
 // Make sure to define error-handling middleware in the last, after other app.use().
+app.use(errorHandler)
 
 // Listen on environment port or 5000
 app.listen(port, () => {

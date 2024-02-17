@@ -1,19 +1,38 @@
+{{> admin-navbar}}
+
+{{> messages}}
 <div class="row mt-5">
     <div class="col-md-auto m-auto">
         <div class="card border-primary mb-3" style="max-width: 20rem;">
+
+            {{#if user}}
+            {{#each user}}
+            {{this.user}}
+            {{/each}}
+            {{/if}}
             <div class="card-header">
-                Welcome <%= user.name %>
+                Welcome {{user.row.user_id}} <b>{{user.firstname}}</b>
             </div>
+
 
             <div class="card-body">
                 <h4 class="card-title">Dashboard</h4>
-
-
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.
+                <p class="card-text">This is ADMIN Dashboard page, Some quick example text to build on the card title
+                    and make up the bulk of the
+                    card's content.
                 </p>
+                <ul>
+
+                    <li></li>
+
+                </ul>
+                {{!-- If user row found in the cookie --}}
+                {{#if user.row}}
                 <div class=""><a href="/admin/logout" class="btn btn-outline-danger">Logout</a></div>
+                {{else}}
+                <div class=""><a href="/admin/login" class="btn btn-outline-danger">Login</a></div>
+
+                {{/if}}
             </div>
         </div>
     </div>

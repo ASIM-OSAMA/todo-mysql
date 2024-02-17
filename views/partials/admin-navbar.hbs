@@ -1,4 +1,4 @@
-{{!-- This Navbar --}}
+{{!-- This Admin Navbar --}}
 <header>
     <div class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
         <div class="container-fluid">
@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home
+                        <a class="nav-link active" href="/admin/">Home
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
@@ -30,7 +30,12 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/logout">Log Out</a>
+                        {{#if user.row}}
+                        <div class=""><a class="nav-link" href="/admin/logout">LogOut</a></div>
+                        {{else}}
+                        <div class=""><a class="nav-link" href="/admin/logout">Login</a>
+                        </div>
+                        {{/if}}
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"

@@ -10,6 +10,7 @@
   "author": "ASIM",
   "license": "ISC",
   "dependencies": {
+    "async": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/async",
     "bcryptjs": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/bcryptjs",
     "connect-flash": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/connect-flash",
     "connect-sqlite3": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/connect-sqlite3",

@@ -5,25 +5,14 @@ const validateUser = require('../validations/registerValidation')
 const passport = require('passport')
 
 // Dashboard, Welcome, Manage-Admin routes handling
-router.get('/', (req, res) => res.render('./admin/welcome'))
-router.get('/dashboard', (req, res) => res.render('./admin/dashboard'))
+// router.get('/', (req, res) => res.render('./admin/welcome'))
+router.get('/', (req, res) => res.render('./admin/dashboard', {}))
+
 router.get('/manage-admins', (req, res) => res.render('./admin/manage-admins'))
 
 // Register routes and form handling
 router.get('/register', (req, res) => res.render('./admin/register'))
 router.route('/register').post(validateUser, register)
-
-// Login routes and form handling
-router.get('/login', (req, res) => res.render('./admin/login'))
-
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/admin/manage-admins',
-    failureRedirect: '/admin/login',
-    badRequestMessage: 'Missing Credentials.', //missing credentials,
-    failureFlash: true
-  })(req, res, next)
-})
 
 // Logout routes handling
 router.get('/logout', (req, res) => {

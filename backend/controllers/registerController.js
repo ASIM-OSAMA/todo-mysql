@@ -3,7 +3,7 @@
 const asyncHandler = require('express-async-handler')
 const pool = require('../config/db')
 const bcrypt = require('bcryptjs')
-const { errorHandler } = require('../middleware/errorMiddleware')
+// const { errorHandler } = require('../middleware/errorMiddleware')
 
 // Register form handling
 

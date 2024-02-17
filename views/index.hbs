@@ -1,47 +1,54 @@
-{{!-- {{> navbar}}
-<h3 class="text-center ">HOME PAGE.</h3>
+{{> todo-navbar}}
 
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card border-primary card-body">
 
-<h4 class="mb-4">Tasks TODO</h4>
+            <h1 class="text-center mb-3">
+                <i class="fa-solid fa-list"></i>
+                Tasks TODO
+            </h1>
 
-<form action="/todos" method="post" class="mb-4">
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" name="name" class="form-control">
+            {{> messages}}
+            <form action="#" method="POST">
+
+                <div class="form-group">
+                    <div class="form-floating mt-2">
+                        <input type="name" id="taskTitle" name="taskTitle" class="form-control"
+                            placeholder="Enter First Name" value="{{taskTitle}}" required>
+                        <label for="taskTitle">Task Title</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-floating mt-2">
+                        <input type="name" id="taskSubtitle" name="taskSubtitle" class="form-control"
+                            placeholder="Enter First Name" value="{{taskSubtitle}}">
+                        <label for="taskSubtitle">Task Subtitle</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-floating mt-2">
+                        <input type="name" id="taskTodo" name="taskTodo" class="form-control"
+                            placeholder="Enter First Name" value="{{taskTodo}}" required>
+                        <label for="taskTodo">Task Todo</label>
+                    </div>
+                </div>
+
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Done</label>
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary mt-4">
+                    Add Task
+                </button>
+            </form>
+
+        </div>
     </div>
-    <div class="form-group">
-        <label for="text">Text:</label>
-        <input type="text" name="text" class="form-control">
-    </div>
-    <input type="submit" value="Add Task" class="btn btn-primary btn-block">
-</form>
-
-<div class="list-group">
-    {{#each todoData}}
-    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-        <h6>USERNAME</h6>
-        <div class="d-flex w-100 justify-content-between">
-            <h6 class="mb-1">{{this.name}}</h6>
-            <small>3 days ago</small>
-        </div>
-        <p class="mb-1">{{this.text}}</p>
-        <small>And some small print.</small>
-    </a>
-    {{/each}}
-    {{!-- <a href="#" class="list-group-item list-group-item-action active">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-body-secondary">3 days ago</small>
-        </div>
-        <p class="mb-1">Some placeholder content in a paragraph.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-body-secondary">3 days ago</small>
-        </div>
-        <p class="mb-1">Some placeholder content in a paragraph.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-    </a> --}}
-</div> --}}
+</div>
+</div>
+</div>
+</div>
