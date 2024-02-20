@@ -8,7 +8,7 @@ const { globalVariables } = require('./backend/middleware/globalVariables')
 const session = require('express-session')
 const SQLiteStore = require('connect-sqlite3')(session)
 const passport = require('passport')
-require('./backend/authentication/passport')(passport)
+require('./backend/auth/passport')(passport)
 // const { getUserData } = require('./backend/middleware/getUserData')
 const { errorHandler } = require('./backend/middleware/errorMiddleware')
 
