@@ -4,29 +4,38 @@ const passport = require('passport')
 const todoRoutes = require('./todoRoutes')
 const usersRoutes = require('./usersRoutes')
 const adminRoutes = require('./adminRoutes')
+const loginRoute = require('./loginRoute')
+const logoutRoute = require('./logoutRoute')
 const { ensureAuthenticated } = require('../middleware/authenticate')
+const { authz } = require('../middleware/authorization')
 
 const app = express()
 
 // Make sure all following routes will be passed through ensureAuthenticated
+
 const routes = [
   // Todo index page
-  app.get('/', (req, res) => res.render('index')),
-  app.get('/admin/login', (req, res) => res.render('./admin/login')),
-
-  app.post('/admin/login', (req, res, next) => {
-    passport.authenticate('local', {
-      successRedirect: '/admin',
-      // successMessage,
-      failureRedirect: '/admin/login',
-      badRequestMessage: 'Missing Credentials.', //missing credentials,
-      failureFlash: true
-    })(req, res, next)
+  app.get('/', (req, res) => {
+    if (req.user) {
+      res.render('index', {
+        id: req.user.id,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname,
+        picture: req.user.picture
+      })
+    } else {
+      res.render('index')
+    }
   }),
+  app.get('/login', (req, res) => res.render('./admin/login')),
 
-  app.all('*', ensureAuthenticated),
-  app.use('/admin', adminRoutes),
-  app.use('/admin/users', usersRoutes)
+  app.use(loginRoute),
+
+  app.use(logoutRoute),
+
+  app.all('*', ensureAuthenticated, authz),
+  app.use('/admin', authz, adminRoutes),
+  app.use('/admin/users', authz, usersRoutes)
   // app.use('/todos', todoRoutes)
 ]
 

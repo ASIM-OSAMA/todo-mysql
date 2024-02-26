@@ -11,7 +11,7 @@
             {{/each}}
             {{/if}}
             <div class="card-header">
-                Welcome {{user.row.user_id}} <b>{{user.firstname}}</b>
+                Welcome {{user.row.user_id}} <b>{{user.row.firstname}}</b>
             </div>
 
 
@@ -28,9 +28,9 @@
                 </ul>
                 {{!-- If user row found in the cookie --}}
                 {{#if user.row}}
-                <div class=""><a href="/admin/logout" class="btn btn-outline-danger">Logout</a></div>
+                <div class=""><a href="/logout" class="btn btn-outline-danger">Logout</a></div>
                 {{else}}
-                <div class=""><a href="/admin/login" class="btn btn-outline-danger">Login</a></div>
+                <div class=""><a href="/login" class="btn btn-outline-danger">Login</a></div>
 
                 {{/if}}
             </div>

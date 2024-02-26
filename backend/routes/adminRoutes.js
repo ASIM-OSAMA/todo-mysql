@@ -14,15 +14,15 @@ router.get('/manage-admins', (req, res) => res.render('./admin/manage-admins'))
 router.get('/register', (req, res) => res.render('./admin/register'))
 router.route('/register').post(validateUser, register)
 
-// Logout routes handling
-router.get('/logout', (req, res) => {
-  req.logout(err => {
-    if (err) {
-      return next(err)
-    }
-    req.flash('success_msg', 'Successfully Logged-Out')
-    res.redirect('/admin/login') //Redirect to login page
-  })
-})
+// // Logout routes handling
+// router.get('/logout', (req, res) => {
+//   req.logout(err => {
+//     if (err) {
+//       return next(err)
+//     }
+//     req.flash('success_msg', 'Successfully Logged-Out')
+//     res.redirect('/admin/login') //Redirect to login page
+//   })
+// })
 
 module.exports = router

@@ -1,7 +1,8 @@
-const logger = require('morgan')
+// const logger = require('morgan')
 const express = require('express')
-const pool = require('./backend/config/db')
-const exphbs = require('express-handlebars').engine
+const path = require('path')
+const exphbs = require('express-handlebars')
+// const hbsConfig = require('./backend/config/hbs')
 const { routes } = require('./backend/routes/routes')
 const flash = require('connect-flash')
 const { globalVariables } = require('./backend/middleware/globalVariables')
@@ -9,31 +10,41 @@ const session = require('express-session')
 const SQLiteStore = require('connect-sqlite3')(session)
 const passport = require('passport')
 require('./backend/auth/passport')(passport)
-// const { getUserData } = require('./backend/middleware/getUserData')
 const { errorHandler } = require('./backend/middleware/errorMiddleware')
 
 const app = express()
 
 const port = process.env.PORT || 3000
 
-// configure Handlebars view engine
-app.engine(
-  'hbs',
-  exphbs({
-    defaultLayout: 'main',
-    extname: '.hbs'
-    // helpers: {
-    //   section: function (name, options) {
-    //     if (!this._sections) this._sections = {}
-    //     this._sections[name] = options.fn(this)
-    //     return null
-    //   }
-    // }
-  })
-)
-app.set('view engine', 'hbs')
-app.use(express.static(__dirname + '/frontend/public'))
+// Configure Handlebars view engine
+
+// const staticPath = path.join(__dirname, '/frontend/public')
+const staticPath = __dirname + '/frontend/public'
+
 // console.log(__dirname + '/frontend/public')
+
+const hbsCreate = exphbs.create({
+  defaultLayout: 'main',
+  // layoutsDir: layoutPath,
+  // partialsDir: partialsPath,
+  extname: '.hbs'
+
+  // helpers: {
+  // section: function (name, options) {
+  // if (!this._sections) this._sections = {}
+  // this._sections[name] = options.fn(this)
+  // return null
+  // }
+  // }
+})
+
+// Configure Handlebars view engine
+
+app.engine('hbs', hbsCreate.engine)
+app.set('view engine', 'hbs')
+app.use(express.static(staticPath))
+
+// -----------------------------------------------------------------
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }))

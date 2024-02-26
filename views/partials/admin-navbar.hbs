@@ -29,14 +29,6 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        {{#if user.row}}
-                        <div class=""><a class="nav-link" href="/admin/logout">LogOut</a></div>
-                        {{else}}
-                        <div class=""><a class="nav-link" href="/admin/logout">Login</a>
-                        </div>
-                        {{/if}}
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false">About the Developer</a>
@@ -48,7 +40,18 @@
                             <a class="dropdown-item" href="#">Separated link</a>
                         </div>
                     </li>
+
+                    <li class="nav-item">
+                        {{#if user.row}}
+                        <div class=""><a class="nav-link" href="/logout">LogOut</a></div>
+                        {{else}}
+                        <div class=""><a class="nav-link" href="/login">Login</a>
+                        </div>
+                        {{/if}}
+                    </li>
+
                 </ul>
+
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="search" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>

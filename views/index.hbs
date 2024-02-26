@@ -2,12 +2,28 @@
 
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
-        <div class="card border-primary card-body">
+        <div class="card border-light card-body">
 
             <h1 class="text-center mb-3">
                 <i class="fa-solid fa-list"></i>
                 Tasks TODO
             </h1>
+
+            {{#if id}}
+
+            {{else}}
+            <h6>
+                <a href="/login">
+                    Login
+                </a>
+                or
+                <a href="#">
+                    Sign up
+                </a>
+                to save tasks!
+            </h6>
+
+            {{/if}}
 
             {{> messages}}
             <form action="#" method="POST">
@@ -37,6 +53,7 @@
                 </div>
 
                 <div class="form-check mt-2">
+                    {{!-- if user is logged in save task, else redirect to login page --}}
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">Done</label>
                 </div>

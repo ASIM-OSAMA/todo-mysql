@@ -1,11 +1,13 @@
 // const express = require('express')
+const express = require('express')
 const asyncHandler = require('express-async-handler')
 const async = require('async')
 const pool = require('../config/db')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcryptjs')
-// const { getUserData } = require('../middleware/getUserData')
+
+const app = express()
 
 // cb == done
 
@@ -54,27 +56,6 @@ module.exports = passport => {
     )
   )
 
-  // const getUserData = id_obj => {
-  //   const id = id_obj.id
-
-  //   pool.query(`SELECT * FROM users WHERE user_id = ?`, id, (err, row) => {
-  //     if (err) {
-  //       return err
-  //     }
-  //     // // Add if no id was found.
-  //     // if (row.length == 0) {
-  //     //   // return reject('ID to Deserialize Not Found!')
-  //     //   return ( 'ID to Deserialize Not Found!')
-  //     // }
-
-  //     // if id found
-  //     else {
-  //       console.log(`passport.js console.log 2: ${row[0].user_firstname}`)
-  //       return cb(null, getUserData(id))
-  //     }
-  //   })
-  // }
-
   // To maintain a login session:
 
   // Serialize: takes infos about the user (user_id) only and store it in the (cookie).
@@ -103,7 +84,11 @@ module.exports = passport => {
         else {
           // console.log(`passport.js console.log 2: ${row[0].user_firstname}`)
           return cb(null, {
-            row: row[0]
+            // row: row[0]
+            id: row[0].user_id,
+            firstname: row[0].user_firstname,
+            lastname: row[0].user_lastname,
+            picture: row[0].user_picture
           })
           // Access the row data from .hbs by --> {{user.row.user_id}}
         }
