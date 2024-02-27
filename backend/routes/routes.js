@@ -1,6 +1,6 @@
 const express = require('express')
-const router = express.Router()
-const passport = require('passport')
+// const router = express.Router()
+// const passport = require('passport')
 const todoRoutes = require('./todoRoutes')
 const usersRoutes = require('./usersRoutes')
 const adminRoutes = require('./adminRoutes')
@@ -27,16 +27,17 @@ const routes = [
       res.render('index')
     }
   }),
+
   app.get('/login', (req, res) => res.render('./admin/login')),
 
   app.use(loginRoute),
 
   app.use(logoutRoute),
 
-  app.all('*', ensureAuthenticated, authz),
+  app.all('*', ensureAuthenticated),
   app.use('/admin', authz, adminRoutes),
-  app.use('/admin/users', authz, usersRoutes)
-  // app.use('/todos', todoRoutes)
+  app.use('/admin/users', authz, usersRoutes),
+  app.use('/todo', todoRoutes)
 ]
 
 module.exports = { routes }

@@ -27,7 +27,7 @@
 
                 </ul>
                 {{!-- If user row found in the cookie --}}
-                {{#if user.row}}
+                {{#if req.user}}
                 <div class=""><a href="/logout" class="btn btn-outline-danger">Logout</a></div>
                 {{else}}
                 <div class=""><a href="/login" class="btn btn-outline-danger">Login</a></div>

@@ -88,6 +88,7 @@ module.exports = passport => {
             id: row[0].user_id,
             firstname: row[0].user_firstname,
             lastname: row[0].user_lastname,
+            role: row[0].user_role,
             picture: row[0].user_picture
           })
           // Access the row data from .hbs by --> {{user.row.user_id}}

@@ -1,29 +1,37 @@
-<div class="list-group">
-    {{#each todoData}}
-    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-        <h6>USERNAME</h6>
-        <div class="d-flex w-100 justify-content-between">
-            <h6 class="mb-1">{{this.name}}</h6>
-            <small>3 days ago</small>
+{{> todo-navbar}}
+
+<div class="row mt-5">
+    <div class="col-md-3 m-auto">
+        <div class="card border-primary mb-3" style="max-width: 20rem;">
+            <div class="list-group">
+                {{#each todoData}}
+                <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+                    <h6>USERNAME</h6>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">{{this.name}}</h6>
+                        <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1">{{this.text}}</p>
+                    <small>And some small print.</small>
+                </a>
+                {{/each}}
+                <a href="#" class="list-group-item list-group-item-action active">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-body-secondary">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    <small class="text-body-secondary">And some muted small print.</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-body-secondary">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    <small class="text-body-secondary">And some muted small print.</small>
+                </a>
+            </div>
         </div>
-        <p class="mb-1">{{this.text}}</p>
-        <small>And some small print.</small>
-    </a>
-    {{/each}}
-    <a href="#" class="list-group-item list-group-item-action active">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-body-secondary">3 days ago</small>
-        </div>
-        <p class="mb-1">Some placeholder content in a paragraph.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-body-secondary">3 days ago</small>
-        </div>
-        <p class="mb-1">Some placeholder content in a paragraph.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-    </a>
+    </div>
 </div>

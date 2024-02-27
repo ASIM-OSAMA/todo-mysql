@@ -42,7 +42,7 @@
                     </li>
 
                     <li class="nav-item">
-                        {{#if user.row}}
+                        {{#if req.user.id}}
                         <div class=""><a class="nav-link" href="/logout">LogOut</a></div>
                         {{else}}
                         <div class=""><a class="nav-link" href="/login">Login</a>

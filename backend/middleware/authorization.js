@@ -1,5 +1,5 @@
 const authz = (req, res, next) => {
-  role = req.user.user_role
+  role = req.user.role
 
   if (role === 'admin') {
     // // if user is admin
@@ -7,7 +7,7 @@ const authz = (req, res, next) => {
     return next()
   } else {
     // // if user is not admin
-    // console.log('Not Admin')
+    console.log(req.user)
 
     res.status(404).render('./error/404')
     // next('route')
