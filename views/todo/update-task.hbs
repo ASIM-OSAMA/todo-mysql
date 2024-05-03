@@ -1,5 +1,5 @@
-{{#if id}}
-{{#ifAdmin role}}
+{{#if user.id}}
+{{#ifAdmin user.role}}
 {{> admin-navbar}}
 {{else}}
 
@@ -12,40 +12,22 @@
 
 {{!-- ----------------------------------------------------------------------------------- --}}
 
-{{> messages}}
-
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
         <div class="card border-light card-body">
 
-            <h1 class="text-center mb-3">
-                <i class="fa-solid fa-list"></i>
-                Tasks TODO
-            </h1>
-
-            {{#if id}}
-
-            {{else}}
-            <h6>
-                <a href="/login">
-                    Login
-                </a>
-                or
-                <a href="/register">
-                    Sign up
-                </a>
-                to save tasks!
-            </h6>
-
-            {{/if}}
+            <h4 class="text-center mb-3">
+                Update Task
+            </h4>
 
             {{> messages}}
-            <form action="/todo/tasks" method="POST">
 
+            {{#each allTasks}}
+            <form action="/todo/tasks/update/{{task_id}}" method="POST">
                 <div class="form-group">
                     <div class="form-floating mt-2">
                         <input type="name" id="taskTitle" name="taskTitle" class="form-control"
-                            placeholder="Enter First Name" value="{{taskTitle}}" required />
+                            placeholder="Enter First Name" value="{{task_title}}" required />
                         <label for="taskTitle">Task Title</label>
                     </div>
                 </div>
@@ -53,7 +35,7 @@
                 <div class="form-group">
                     <div class="form-floating mt-2">
                         <input type="name" id="taskSubtitle" name="taskSubtitle" class="form-control"
-                            placeholder="Enter First Name" value="{{taskSubtitle}}">
+                            placeholder="Enter First Name" value="{{task_subtitle}}">
                         <label for="taskSubtitle">Task Subtitle</label>
                     </div>
                 </div>
@@ -78,10 +60,13 @@
                     </div>
                 </div>
 
+
                 <button type="submit" class="btn btn-outline-primary mt-4">
-                    Add Task
+                    Submit
                 </button>
+
             </form>
+            {{/each}}
 
         </div>
     </div>

@@ -1,3 +1,25 @@
+# Ignore Node Modules
 node_modules
-
+# Ignore env file
 .env
+
+# Ignore all .log files
+*.log
+log
+
+# Ignore test coverage folder
+coverage
+
+# ignore certificate folder
+cert
+
+# Ignore README.md 
+READ.MD
+
+# Ignore all files starting with a period
+.*
+
+sum.js
+
+# Ignore all files ending with a tilde
+*~

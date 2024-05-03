@@ -3,7 +3,8 @@ const authz = (req, res, next) => {
 
   if (role === 'admin') {
     // // if user is admin
-    // console.log(`Test: yes`)
+    user = res.locals.user
+
     return next()
   } else {
     // // if user is not admin

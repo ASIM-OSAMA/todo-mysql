@@ -4,7 +4,7 @@
   "description": "TODO app using node.js and MySql.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage --testTimeout=5000",
     "start": "nodemon app.js"
   },
   "author": "ASIM",
@@ -14,6 +14,7 @@
     "bcryptjs": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/bcryptjs",
     "connect-flash": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/connect-flash",
     "connect-sqlite3": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/connect-sqlite3",
+    "cross-env": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/cross-env",
     "dotenv": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/dotenv",
     "express": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express",
     "express-async-handler": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-async-handler",
@@ -27,6 +28,11 @@
     "passport-local": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport-local"
   },
   "devDependencies": {
-    "nodemon": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/nodemon"
+    "babel-cli": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/babel-cli",
+    "babel-preset-env": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/babel-preset-env",
+    "jest": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/jest",
+    "nodemon": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/nodemon",
+    "superagent": "^8.1.2",
+    "supertest": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/supertest"
   }
 }

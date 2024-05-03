@@ -27,15 +27,24 @@ const hbsCreate = exphbs.create({
   defaultLayout: 'main',
   // layoutsDir: layoutPath,
   // partialsDir: partialsPath,
-  extname: '.hbs'
+  extname: '.hbs',
 
-  // helpers: {
-  // section: function (name, options) {
-  // if (!this._sections) this._sections = {}
-  // this._sections[name] = options.fn(this)
-  // return null
-  // }
-  // }
+  helpers: {
+    // section: function (name, options) {
+    // if (!this._sections) this._sections = {}
+    // this._sections[name] = options.fn(this)
+    // return null
+    // }
+
+    ifAdmin: (role, options) => {
+      if (role === 'admin') {
+        return options.fn(this)
+      } else {
+        // Handlebars provides the block for the else fragment as options.inverse (hbs docs)
+        return options.inverse(this)
+      }
+    }
+  }
 })
 
 // Configure Handlebars view engine
@@ -52,7 +61,7 @@ app.use(express.urlencoded({ extended: true }))
 // Express session
 app.use(
   session({
-    secret: 'secret',
+    secret: 'ziz ez mai seshon sekrit',
     resave: true,
     saveUninitialized: true,
     store: new SQLiteStore({ db: 'sessions.db', dir: './backend/config' })

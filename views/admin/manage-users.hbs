@@ -6,7 +6,7 @@
 
         <div class="card border-primary mb-3" style="max-width: 100%;">
             <div class="card-header">
-                Welcome <%= user.name %>
+                Welcome <b> {{user.firstname}} </b>
             </div>
             <div class="card-body">
                 <h4 class="card-title">MANAGE USERS</h4>
@@ -17,7 +17,7 @@
                     card's content.
                 </p>
                 <div class="mb-4">
-                    <a href="/admin/register" class="btn btn-outline-primary">Add an Administrator</a>
+                    <a href="/register" class="btn btn-outline-primary">Add an Administrator</a>
                 </div>
 
                 <div class="table-responsive">
@@ -50,8 +50,8 @@
                             <td scope="row">{{this.linked_accounts}}</td>
                             <td scope="row">{{this.created}}</td>
                             <td scope="row">
-                                <a href="#" class="btn btn-outline-warning mt-1 px-2">Update User</a>
-                                <a href="#" class="btn btn-outline-danger mt-1 px-1">Remove User</a>
+                                <a href="#" class="btn btn-outline-warning mt-1 px-2">Update</a>
+                                <a href="#" class="btn btn-outline-danger mt-1 px-1">Remove</a>
                             </td>
                         </tr>
                         {{/each}}

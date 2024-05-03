@@ -3,7 +3,6 @@
 const asyncHandler = require('express-async-handler')
 const pool = require('../config/db')
 const bcrypt = require('bcryptjs')
-// const { errorHandler } = require('../middleware/errorMiddleware')
 
 // Register form handling
 
@@ -50,7 +49,7 @@ const register = (req, res) => {
                 `You are now registered ${firstname}, Login to continue.`
               )
               res.status(302).redirect('login')
-              console.log(`${firstname} has been added.`)
+              // console.log(`${firstname} has been added.`)
             } else {
               console.log(err)
             }
@@ -62,8 +61,6 @@ const register = (req, res) => {
     })
   })
 }
-
-// // Login form handling
 
 module.exports = {
   register

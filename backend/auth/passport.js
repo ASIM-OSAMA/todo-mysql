@@ -1,7 +1,7 @@
 // const express = require('express')
 const express = require('express')
-const asyncHandler = require('express-async-handler')
-const async = require('async')
+// const asyncHandler = require('express-async-handler')
+// const async = require('async')
 const pool = require('../config/db')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
@@ -58,41 +58,28 @@ module.exports = passport => {
 
   // To maintain a login session:
 
-  // Serialize: takes infos about the user (user_id) only and store it in the (cookie).
+  // Serialize: takes infos about the user (from DB) and store it in the cookie (in memory).
   passport.serializeUser((user, cb) => {
     process.nextTick(() => {
       return cb(null, { id: user[0].user_id })
     })
   })
 
-  // when the browser makes a req (i.e home page), the cookie comes back with the (user_id)
+  // when the browser makes a req (i.e home page), the cookie comes back with the user_id (from memory)
   // deserialize use the (cookie) to retrieve infos about user with that (id).
 
   passport.deserializeUser((id, cb) => {
     process.nextTick(() => {
       pool.query(`SELECT * FROM users WHERE user_id = ?`, id.id, (err, row) => {
-        if (err) {
-          return err
-        }
-        // // Add if no id was found.
-        // if (row.length == 0) {
-        //   // return reject('ID to Deserialize Not Found!')
-        //   return ( 'ID to Deserialize Not Found!')
-        // }
-
-        // if id found
-        else {
-          // console.log(`passport.js console.log 2: ${row[0].user_firstname}`)
-          return cb(null, {
-            // row: row[0]
-            id: row[0].user_id,
-            firstname: row[0].user_firstname,
-            lastname: row[0].user_lastname,
-            role: row[0].user_role,
-            picture: row[0].user_picture
-          })
-          // Access the row data from .hbs by --> {{user.row.user_id}}
-        }
+        return cb(null, {
+          // row: row[0],
+          id: row[0].user_id,
+          firstname: row[0].user_firstname,
+          lastname: row[0].user_lastname,
+          role: row[0].user_role,
+          picture: row[0].user_picture
+        })
+        // Access the row data from .hbs by --> {{user.row.user_id}}
       })
     })
   })

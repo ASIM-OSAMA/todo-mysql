@@ -28,47 +28,45 @@
                         </a>
                     </li>
 
-                    {{#if id}}
+
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false">Manage Tasks</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Add Task</a>
+                            <a class="dropdown-item" href="/">Add Task</a>
                             <a class="dropdown-item" href="/todo/tasks">View Tasks</a>
-                            <a class="dropdown-item" href="#">Update Task</a>
-                            <a class="dropdown-item" href="#">Delete Task</a>
+                            <a class="dropdown-item" href="/todo/update">Update Task</a>
+                            <a class="dropdown-item" href="/todo/delete-task">Delete Task</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Separated link</a>
                         </div>
                     </li>
-
-                    {{/if}}
-
-
                 </ul>
 
                 <div class="mx-auto">
-                    <form class="d-flex">
-                        <input class="form-control me-sm-2" type="search" placeholder="Search">
+                    <form action="#" method="GET" class="d-flex">
+                        <input class="form-control me-sm-2" type="search" name="search" placeholder="Search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
 
                 <ul class='navbar-nav mx-auto'>
-                    {{#if id}}
                     <li class="nav-item dropdown ">
                         {{!-- if user is signed-in --}}
                         <a class="navbar-brand dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false">
                             {{!-- <img class="avatar avatar-24 bg-light rounded-circle text-black p-1" --}} <img
                                 class="" width="24px" src="./images/user/user-regular.svg" alt="user-image">
+
                         </a>
 
                         <div class="dropdown-menu">
                             <div class="dropdown-item">
                                 <b>
-                                    {{firstname}} {{lastname}}
+                                    1: {{firstname}}
+                                    <br>
+                                    2: {{res.locals.user.role}}
                                 </b>
                             </div>
                             <div class="dropdown-divider"></div>
@@ -79,13 +77,6 @@
                             <a class="dropdown-item" href="/logout">Log out</a>
                         </div>
                     </li>
-                    {{else}}
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-
-                    {{/if}}
                 </ul>
             </div>
         </div>

@@ -1,37 +1,68 @@
-{{> todo-navbar}}
+{{#if user.id}}
+{{#ifAdmin user.role}}
+{{> admin-navbar}}
+{{else}}
 
-<div class="row mt-5">
-    <div class="col-md-3 m-auto">
-        <div class="card border-primary mb-3" style="max-width: 20rem;">
-            <div class="list-group">
-                {{#each todoData}}
-                <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-                    <h6>USERNAME</h6>
-                    <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{this.name}}</h6>
-                        <small>3 days ago</small>
+{{> todo-navbar}}
+{{/ifAdmin}}
+
+{{else}}
+{{!-- <h6>NOT LOGGED IN</h6> --}}
+{{/if}}
+
+{{!-- ----------------------------------------------------------------------------------- --}}
+
+<div class="list-group mx-2">
+    <div class="card-subtitle mb-4 m-2">
+        {{> messages}}
+        <h4 class="">Tasks Count: {{tasksCount}}</h4>
+        <a href="/" class="btn btn-outline-primary">Add Task</a>
+    </div>
+
+    {{#each allTasks}}
+    {{!-- <a href="#" class="list-group-item list-group-item-action active"> --}}
+        <div class="list-group-item list-group-item-action">
+            <a href="/todo/tasks/{{this.task_id}}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class=" mb-1">{{this.task_title}}</h5>
+                </div>
+                <h6 class="mb-1">{{this.task_subtitle}}</h6>
+                <p class="mb-1">{{this.task_todo}}</p>
+                <h6 class="mb-1">Done: <b>{{this.done}}</b></h6>
+                <form action="#" method="POST">
+                    <div>
+                        <div class="btn-group my-2" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="done" id="btnradio1" autocomplete="off"
+                                checked="" value="Yes">
+                            <label class="btn btn-outline-primary" for="btnradio1">Done</label>
+                            <input type="radio" class="btn-check" name="done" id="btnradio2" autocomplete="off"
+                                checked="" value="No">
+                            <label class="btn btn-outline-primary" for="btnradio2">Not Yet</label>
+                        </div>
                     </div>
-                    <p class="mb-1">{{this.text}}</p>
-                    <small>And some small print.</small>
+                </form>
+                <div>
+                    <small class="text-body-secondary">Last Edited: {{this.last_edited}}</small>
+                </div>
+                <div>
+                    <small class="text-body-secondary">Created: {{this.created}}</small>
+                </div>
+            </a>
+
+            <div class="list-group-item">
+
+                <a href="/todo/tasks/update/{{this.task_id}}" class="card-link btn btn-outline-warning mt-1 px-2 ">
+                    Update
                 </a>
-                {{/each}}
-                <a href="#" class="list-group-item list-group-item-action active">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small class="text-body-secondary">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small class="text-body-secondary">And some muted small print.</small>
+
+
+                <a href="/todo/tasks/delete/{{this.task_id}}"
+                    onclick="return confirm('Are you sure to delete this task?')"
+                    class="card-link btn btn-outline-danger mt-1 px-1">Delete
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small class="text-body-secondary">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small class="text-body-secondary">And some muted small print.</small>
-                </a>
+
+                </form>
             </div>
         </div>
-    </div>
+        {{/each}}
 </div>

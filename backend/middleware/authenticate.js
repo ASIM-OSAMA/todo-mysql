@@ -3,6 +3,14 @@ module.exports = {
     if (req.isAuthenticated()) {
       // Get user FIRSTNAME
       // res.locals.user = req.user
+      res.locals.user = {
+        id: req.user.id,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname,
+        picture: req.user.picture,
+        role: req.user.role
+      }
+      user = res.locals.user
 
       return next()
     }

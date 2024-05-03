@@ -11,23 +11,22 @@
             {{/each}}
             {{/if}}
             <div class="card-header">
-                Welcome {{user.row.user_id}} <b>{{user.row.firstname}}</b>
+                Welcome <b>{{user.firstname}}</b>
             </div>
 
 
             <div class="card-body">
                 <h4 class="card-title">Dashboard</h4>
+                <h5>No. Admins: </h5>
+                <h5>No. Users: </h5>
+                <h5>Amount of Storage Used: </h5>
                 <p class="card-text">This is ADMIN Dashboard page, Some quick example text to build on the card title
                     and make up the bulk of the
                     card's content.
                 </p>
-                <ul>
 
-                    <li></li>
-
-                </ul>
                 {{!-- If user row found in the cookie --}}
-                {{#if req.user}}
+                {{#if user.id}}
                 <div class=""><a href="/logout" class="btn btn-outline-danger">Logout</a></div>
                 {{else}}
                 <div class=""><a href="/login" class="btn btn-outline-danger">Login</a></div>

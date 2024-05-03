@@ -14,9 +14,13 @@ const getUsers = asyncHandler(async (req, res) => {
 
       if (!err) {
         const usersCount = allUsers.length
-        res.status(200).render('./admin/manage-users', { allUsers, usersCount })
+        res.status(200).render('./admin/manage-users', {
+          title: 'Manage Users',
+          allUsers,
+          usersCount
+        })
         // res.status(200).json({ allUsers })
-        console.log('Get all users OK_1 👍')
+        // console.log('Get all users OK_1 👍')
       } else {
         console.log(err)
       }
