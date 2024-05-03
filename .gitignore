@@ -5,7 +5,7 @@ node_modules
 
 # Ignore all .log files
 *.log
-log
+logs
 
 # Ignore test coverage folder
 coverage
@@ -14,11 +14,12 @@ coverage
 cert
 
 # Ignore README.md 
-READ.MD
+read.md
 
 # Ignore all files starting with a period
 .*
 
+# 
 sum.js
 
 # Ignore all files ending with a tilde
