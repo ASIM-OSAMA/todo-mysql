@@ -5,34 +5,34 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --coverage --testTimeout=5000",
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "ASIM",
   "license": "ISC",
   "dependencies": {
-    "async": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/async",
-    "bcryptjs": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/bcryptjs",
-    "connect-flash": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/connect-flash",
-    "connect-sqlite3": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/connect-sqlite3",
-    "cross-env": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/cross-env",
-    "dotenv": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/dotenv",
-    "express": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express",
-    "express-async-handler": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-async-handler",
-    "express-handlebars": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-handlebars",
-    "express-oauth2-jwt-bearer": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-oauth2-jwt-bearer",
-    "express-session": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-session",
-    "express-validator": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/express-validator",
-    "morgan": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/morgan",
-    "mysql": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/mysql",
-    "passport": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport",
-    "passport-local": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/passport-local"
+    "async": "^3.2.5",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-sqlite3": "^0.9.15",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "express-handlebars": "^7.1.3",
+    "express-oauth2-jwt-bearer": "^1.6.0",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.1.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0"
   },
   "devDependencies": {
-    "babel-cli": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/babel-cli",
-    "babel-preset-env": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/babel-preset-env",
-    "jest": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/jest",
-    "nodemon": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/nodemon",
-    "superagent": "^8.1.2",
-    "supertest": "file:../../../../../Users/asime/AppData/Roaming/npm/node_modules/supertest"
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
   }
 }

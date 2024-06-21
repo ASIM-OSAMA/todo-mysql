@@ -1,8 +1,8 @@
 // Controllers are the thing that directly responds to each HTTP Request
 // that comes into your application, as such each web request will
 // result in (if routed) a new instance of a Controller (Class).
-const asyncHandler = require('express-async-handler')
-const pool = require('../config/db')
+const asyncHandler = require("express-async-handler");
+const pool = require("../config/db");
 // const { errorHandler } = require('../middleware/errorMiddleware')
 
 // All the features logic will go here with separate controller files.
@@ -10,73 +10,73 @@ const pool = require('../config/db')
 // get all tasks
 const getTasks = asyncHandler(async (req, res) => {
   await pool.getConnection((err, connection) => {
-    if (err) throw err
+    if (err) throw err;
     connection.query(
-      'SELECT * from todo WHERE owner_id=?',
+      "SELECT * from todo WHERE owner_id=?",
       req.user.id,
       (err, allTasks) => {
-        connection.release() // return the connection to pool
-        const tasksCount = allTasks.length
+        connection.release(); // return the connection to pool
+        const tasksCount = allTasks.length;
         if (allTasks.length === 0) {
-          req.flash('info_msg', "You Don't Have Tasks Yet!.")
+          req.flash("info_msg", "You Don't Have Tasks Yet!.");
 
-          res.status(200).render('./todo/view-tasks', {
-            title: 'Manage Tasks',
+          res.status(200).render("./todo/view-tasks", {
+            title: "Manage Tasks",
             allTasks,
-            tasksCount
-          })
+            tasksCount,
+          });
         } else if (!err) {
-          res.status(200).render('./todo/view-tasks', {
-            title: 'Manage Tasks',
+          res.status(200).render("./todo/view-tasks", {
+            title: "Manage Tasks",
             allTasks,
-            tasksCount
-          })
+            tasksCount,
+          });
         } else {
-          console.log(err)
-          req.flash('error_msg', `Task Not Found!.`)
-          res.status(400)
+          console.log(err);
+          req.flash("error_msg", `Task Not Found!.`);
+          res.status(400);
         }
 
         // console.log('OK_1 👍')
       }
-    )
-  })
-})
+    );
+  });
+});
 
 // Get todo
 const getTask = asyncHandler(async (req, res) => {
   await pool.getConnection((err, connection) => {
-    if (err) throw err
+    if (err) throw err;
 
-    const ownerId = user.id
-    const taskId = req.params.id
+    const ownerId = user.id;
+    const taskId = req.params.id;
 
     connection.query(
-      'SELECT * FROM todo WHERE owner_id=? AND task_id = ?',
+      "SELECT * FROM todo WHERE owner_id=? AND task_id = ?",
       [ownerId, taskId],
       (err, allTasks) => {
-        connection.release() // return the connection to pool
+        connection.release(); // return the connection to pool
 
         if (allTasks.length === 0) {
-          req.flash('error_msg', `Task Not Found!.`)
-          res.status(400).render('./error/404')
+          req.flash("error_msg", `Task Not Found!.`);
+          res.status(400).render("./error/404");
         } else if (!err) {
-          res.status(200)
-          res.render('./todo/view-tasks', {
-            title: 'Manage Tasks',
-            allTasks
-          })
+          res.status(200);
+          res.render("./todo/view-tasks", {
+            title: "Manage Tasks",
+            allTasks,
+          });
         } else {
-          console.log('err')
-          req.flash('error_msg', `Task Not Found!.`)
-          res.status(400).render('./error/404')
+          console.log("err");
+          req.flash("error_msg", `Task Not Found!.`);
+          res.status(400).render("./error/404");
         }
 
         // console.log('OK_2 👍')
       }
-    )
-  })
-})
+    );
+  });
+});
 
 // // Search Bar: Admin account
 // const searchAdmin = asyncHandler(async (req, res) => {
@@ -149,94 +149,94 @@ const getTask = asyncHandler(async (req, res) => {
 // Add Todo
 const addTask = asyncHandler(async (req, res) => {
   pool.getConnection((err, connection) => {
-    if (err) throw err
+    if (err) throw err;
 
-    const id = user.id
-    const { taskTitle, taskSubtitle, taskTodo, done } = req.body
+    const id = user.id;
+    const { taskTitle, taskSubtitle, taskTodo, done } = req.body;
 
     connection.query(
-      'INSERT INTO todo SET owner_id=?,task_title=?, task_subtitle=?, task_todo=?, done=?',
+      "INSERT INTO todo SET owner_id=?,task_title=?, task_subtitle=?, task_todo=?, done=?",
       [id, taskTitle, taskSubtitle, taskTodo, done],
       (err, rows) => {
-        connection.release() // return the connection to pool
+        connection.release(); // return the connection to pool
         if (!err) {
           //   console.log(`${req.body.taskTitle} has been added.`)
-          req.flash('success_msg', `New Task Added.`)
-          res.status(201).redirect('/todo/tasks')
+          req.flash("success_msg", `New Task Added.`);
+          res.status(201).redirect("/todo/tasks");
         } else {
-          console.log(err)
-          req.flash('error_msg', `Failed to Add Task!`)
-          res.status(400).redirect('/todo/tasks')
+          console.log(err);
+          req.flash("error_msg", `Failed to Add Task!`);
+          res.status(400).redirect("/todo/tasks");
         }
 
         // console.log('ERROR_4')
       }
-    )
-  })
-})
+    );
+  });
+});
 
 // ----------------------------------------------------------------------------------------------------- //
 
 // Edit todo
 const editTask = asyncHandler(async (req, res) => {
   await pool.getConnection((err, connection) => {
-    if (err) throw err
+    if (err) throw err;
 
-    const ownerId = user.id
-    const taskId = req.params.id
+    const ownerId = user.id;
+    const taskId = req.params.id;
     // const { taskTitle, taskSubtitle, taskTodo, done } = req.body
 
     connection.query(
-      'SELECT * FROM todo WHERE owner_id=? AND task_id = ?',
+      "SELECT * FROM todo WHERE owner_id=? AND task_id = ?",
       [ownerId, taskId],
       (err, allTasks) => {
-        connection.release() // return the connection to pool
+        connection.release(); // return the connection to pool
         if (!err) {
-          res.status(200)
-          res.render('./todo/update-task', {
-            title: 'Edit Task',
-            allTasks
-          })
+          res.status(200);
+          res.render("./todo/update-task", {
+            title: "Edit Task",
+            allTasks,
+          });
           //   console.log(allTasks)
         } else {
-          console.log(err)
-          req.flash('error_msg', `Task Not Found!`)
-          res.status(400).redirect('/todo/tasks')
+          console.log(err);
+          req.flash("error_msg", `Task Not Found!`);
+          res.status(400).redirect("/todo/tasks");
         }
 
         // console.log('OK_2 👍')
       }
-    )
-  })
-})
+    );
+  });
+});
 
 // Update todo
 const updateTask = asyncHandler(async (req, res) => {
   await pool.getConnection((err, connection) => {
-    if (err) throw err
+    if (err) throw err;
 
-    const ownerId = user.id
-    const taskId = req.params.id
-    const { taskTitle, taskSubtitle, taskTodo, done } = req.body
+    const ownerId = user.id;
+    const taskId = req.params.id;
+    const { taskTitle, taskSubtitle, taskTodo, done } = req.body;
     connection.query(
-      'UPDATE todo SET task_title=?, task_subtitle=?, task_todo=?, done=? WHERE owner_id=? AND task_id = ?',
+      "UPDATE todo SET task_title=?, task_subtitle=?, task_todo=?, done=? WHERE owner_id=? AND task_id = ?",
       [taskTitle, taskSubtitle, taskTodo, done, ownerId, taskId],
       (err, rows) => {
-        connection.release() // return the connection to pool
+        connection.release(); // return the connection to pool
 
         if (!err) {
           //   console.log(`${taskTitle} has been Updated.`)
-          req.flash('success_msg', `Task Successfully Updated.`)
-          res.status(200).redirect('/todo/tasks')
+          req.flash("success_msg", `Task Successfully Updated.`);
+          res.status(200).redirect("/todo/tasks");
         } else {
-          console.log(err)
-          req.flash('error_msg', `Failed to Update Task!`)
-          res.status(400)
+          console.log(err);
+          req.flash("error_msg", `Failed to Update Task!`);
+          res.status(400);
         }
       }
-    )
-  })
-})
+    );
+  });
+});
 // console.log(req.body)
 
 // ----------------------------------------------------------------------------------- //
@@ -244,31 +244,31 @@ const updateTask = asyncHandler(async (req, res) => {
 // Delete a Task
 const deleteTask = asyncHandler(async (req, res) => {
   await pool.getConnection((err, connection) => {
-    if (err) throw err
+    if (err) throw err;
 
-    const ownerId = user.id
-    const taskId = req.params.id
+    const ownerId = user.id;
+    const taskId = req.params.id;
 
     connection.query(
-      'DELETE FROM todo WHERE owner_id=? AND task_id = ?',
+      "DELETE FROM todo WHERE owner_id=? AND task_id = ?",
       [ownerId, taskId],
       (err, rows) => {
-        connection.release() // return the connection to pool
+        connection.release(); // return the connection to pool
         if (!err) {
           // console.log(`${req.params.id} has been Deleted.`)
-          req.flash('success_msg', `Task has been Deleted.`)
-          res.status(200).redirect('/todo/tasks')
+          req.flash("success_msg", `Task has been Deleted.`);
+          res.status(200).redirect("/todo/tasks");
         } else {
-          console.log(err)
-          req.flash('error_msg', `Task Not Found!.`)
-          res.status(400)
+          console.log(err);
+          req.flash("error_msg", `Task Not Found!.`);
+          res.status(400);
         }
 
         // console.log('ERROR_3')
       }
-    )
-  })
-})
+    );
+  });
+});
 
 module.exports = {
   getTasks,
@@ -278,8 +278,8 @@ module.exports = {
   addTask,
   editTask,
   updateTask,
-  deleteTask
-}
+  deleteTask,
+};
 
 // // const addProduct = asyncHandler(async (req, res) => {
 // //   if (!req.body.text) {

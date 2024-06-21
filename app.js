@@ -1,5 +1,5 @@
-// const logger = require('morgan')
 const express = require('express')
+const logger = require('./backend/logger/logger.js')
 const path = require('path')
 const exphbs = require('express-handlebars')
 // const hbsConfig = require('./backend/config/hbs')
@@ -87,5 +87,7 @@ app.use(errorHandler)
 
 // Listen on environment port or 5000
 app.listen(port, () => {
+  logger.info(`App is running on port ${port}.`, { service: 'Application' })
+
   console.log(`App is running on port ${port}, press Ctrl + C to Terminate.`)
 })
