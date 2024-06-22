@@ -1,26 +1,24 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 const {
   getTasks,
   getTask,
   addTask,
-  editTask,
   updateTask,
-  deleteTask
-} = require('../controllers/todoController')
+  deleteTask,
+} = require("../controllers/todoController");
 
-router.route('/tasks').get(getTasks).post(addTask)
+router.route("/tasks").get(getTasks).post(addTask);
 
-router.get('/tasks/:id', getTask, (req, res) => {
-  res.render('./todo/view-tasks', {
-    title: 'Manage Task',
-    allTasks
-  })
-})
-router.get('/tasks/update/:id', editTask)
+router.get("/tasks/:id", getTask, (req, res) => {
+  res.render("./todo/view-tasks", {
+    title: "Manage Task",
+    allTasks,
+  });
+});
 
-router.post('/tasks/update/:id', updateTask)
+router.put("/tasks/:id", updateTask);
 
-router.get('/tasks/delete/:id', deleteTask)
+router.delete("/tasks/:id", deleteTask);
 
-module.exports = router
+module.exports = router;

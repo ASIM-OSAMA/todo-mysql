@@ -1,34 +1,34 @@
 // Controllers are the thing that directly responds to each HTTP Request
 // that comes into your application, as such each web request will
 // result in (if routed) a new instance of a Controller (Class).
-const asyncHandler = require('express-async-handler')
-const pool = require('../config/db')
+const asyncHandler = require("express-async-handler");
+const pool = require("../config/db");
 // const { errorHandler } = require('../middleware/errorMiddleware')
 
 // All the features logic will go here with separate controller files.
 const getUsers = asyncHandler(async (req, res) => {
   await pool.getConnection((err, connection) => {
-    if (err) throw err
-    connection.query('SELECT * from users', (err, allUsers) => {
-      connection.release() // return the connection to pool
+    if (err) throw err;
+    connection.query("SELECT * from users", (err, allUsers) => {
+      connection.release(); // return the connection to pool
 
       if (!err) {
-        const usersCount = allUsers.length
-        res.status(200).render('./admin/manage-users', {
-          title: 'Manage Users',
+        const usersCount = allUsers.length;
+        res.status(200).render("./admin/manage-users", {
+          title: "Manage Users",
           allUsers,
-          usersCount
-        })
+          usersCount,
+        });
         // res.status(200).json({ allUsers })
         // console.log('Get all users OK_1 👍')
       } else {
-        console.log(err)
+        console.log(err);
       }
 
       // console.log('OK_1 👍')
-    })
-  })
-})
+    });
+  });
+});
 
 // // Get soft_drink
 // const getProduct = asyncHandler(async (req, res) => {
@@ -122,8 +122,8 @@ const getUsers = asyncHandler(async (req, res) => {
 // })
 
 module.exports = {
-  getUsers
-}
+  getUsers,
+};
 
 // // const addProduct = asyncHandler(async (req, res) => {
 // //   if (!req.body.text) {
